@@ -1,53 +1,66 @@
 <html>
-	<head></head>
-	<style type="text/css">     body     {         background-color:blue;     }         </style>
+	<head>
+		<meta charset="utf-8" />
+		<title>Primos</title>
+	</head>
 	<script language="javascript">
-			var a = 0;
-			var c=0;		
-			var c2=0;
-			var str = "";
+			var st1 = "";
+			var st2 = "";
+			function calcPrimo(n)
+			{
+			 	var count = 0;
+				for(var c = 2;c<n-1;c++)
+				{
+					if(parseInt(n)%c==0)
+					{
+						count++;
+					}
+				}
+				if(count == 0)
+				{
+					return true;
+				}else{return false;}
+			}
 			function calcular()
 			{
-				if(document.getElementById("text").value != "")
+				if
+					(
+						document.getElementById("text").value != ""
+					)
 				{
-					c=0;
-					c2=0;
-					a =parseInt(document.getElementById("text").value);
-					n1=parseInt(a/10);
-					n2 = a-parseInt(a/10)*10;
-					for(i=2;i<n1-1;i++)
+					if(parseInt(document.getElementById("text").value) > 0)
 					{
-						if(n1%i==0)
-						{c++;}
-					}
-					for(i=2;i<n2-1;i++)
-					{
-						if(n2%i==0)
-						{c2++;}
-					}
-					if(c!=0)
-					{str = str+"el primer numero "+n1.toString()+" NO ES primo  "}
-					else
-					{str = str+"el primer nuemro "+n1.toString()+" es primo "}
-					if(c2!=0)
-					{str = str+" Y el segundo numero "+n2.toString()+" NO ES primo"}
-					else
-					{str = str+" Y el segundo nuemro "+n2.toString()+" es primo"}
-					alert(str);
-					str="";
-					document.getElementById("text").value="";
-				}
-				else
-				{
-					alert("Debe especificar un numero para dar esta opcion");
-				}
+						if
+						(
+							document.getElementById("text").value[0] != "1" &&
+							document.getElementById("text").value[0] != "0" &&
+							calcPrimo(parseInt(document.getElementById("text").value[0])) == true
+						)
+						{
+							st1+="El primer nuemro es PRIMO"
+						}else{st1+="El primer numero NO ES PRIMO"}
+						if
+						(
+							document.getElementById("text").value[1].value != "1" &&
+							document.getElementById("text").value[1].value != "0" &&
+							parseInt(document.getElementById("text").value[1]) == true
+						)
+						{
+							st2+=" El segundo numero PRIMO"
+						}else{st2+="El segundo numero NO ES PRIMO"}
+						alert(st1+" "+st2);
+						st1 = "";
+						st2 = "";
+					}else{alert("el numero ingresado debe ser mayor que cero(0)");}
+				}else{alert("Debe igresar un numero");}
+				document.getElementById("text").value = "";
 			}
 	</script>
 	<body onload="document.getElementById('text').value='';">
 		<center>
 			<label>Ingrese un numero de dos digitos</label>
 			<input id="text" type="text" maxlength=2 placeholder="numero de dos digitos" /><br/>
-			<button onclick="calcular();"> calcular</button>
+			<button onclick="calcular();">Calcular</button>
 		</center>	
 	</body>
 </html
